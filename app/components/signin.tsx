@@ -29,15 +29,19 @@ const formSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
+  password: z.string().min(8, {
+    message: "Password must be at least 8 characters.",
+  }),
 });
 
-const Singup = () => {
+const Singin = () => {
   const router = useRouter();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
+      password: "",
     },
   });
 
@@ -53,10 +57,17 @@ const Singup = () => {
     router.push("/home");
   };
 
+  const handleClicktoSingup = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    router.push("/signup");
+  };
+
   return (
     <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle className="text-center">Sing up</CardTitle>
+        <CardTitle className="text-center text-3xl">Sing in</CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -68,18 +79,27 @@ const Singup = () => {
                 <FormItem>
                   <FormLabel>Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="username" {...field} />
                   </FormControl>
                   <FormDescription>
                     This is your public display name.
                   </FormDescription>
                   <FormMessage />
-                  <FormLabel>Username</FormLabel>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="password" {...field} />
                   </FormControl>
                   <FormDescription>
-                    password must be at least 8 characters.
+                    Use at least one lowercase letter, one numeral, and seven
+                    characters.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -90,24 +110,24 @@ const Singup = () => {
               onClick={(e) => handleClick(e)}
               className="w-full"
             >
-              Submit
+              Sign in
             </Button>
           </form>
         </Form>
       </CardContent>
       <CardFooter className="flex flex-col items-start">
-        <CardDescription>If you have letter blog account</CardDescription>
+        <CardDescription>If you don't have letter blog account</CardDescription>
         <Button
           type="submit"
-          onClick={(e) => handleClick(e)}
+          onClick={(e) => handleClicktoSingup(e)}
           className="w-full"
           variant="outline"
         >
-          Sign in
+          Sign up
         </Button>
       </CardFooter>
     </Card>
   );
 };
 
-export default Singup;
+export default Singin;

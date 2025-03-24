@@ -1,9 +1,11 @@
-import Singin from "./components/signin";
+import Singup from "../components/signup";
 
-export default function Home() {
+const page = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Singin />
+      <Singup />
     </div>
   );
-}
+};
+
+export default page;
