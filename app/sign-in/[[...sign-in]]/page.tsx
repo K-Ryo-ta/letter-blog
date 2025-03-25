@@ -1,11 +1,9 @@
-import Singup from "../components/signup";
+import { SignIn } from "@clerk/nextjs";
 
-const page = () => {
+export default function Page() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Singup />
+      <SignIn />
     </div>
   );
-};
-
-export default page;
+}

@@ -1,9 +1,7 @@
-import Singin from "./components/signin";
-
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Singin />
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 overflow-auto">
+      ここにブログ一覧とか載せたいね〜
     </div>
   );
 }

@@ -25,6 +25,25 @@
 
 - Next.js (フロント)
 - supabase (BaaS)
-- AWS (デプロイ)
-- cookie (認証)
+- vercel (デプロイ)
+- Clerk (認証)
 - Github Actions(CI/CD)
+- shadcnui (UIライブラリ)
+
+## 技術選定理由
+
+### フロント
+
+Next.jsでディレクトリを作成することでルーティングが設定でき、作成しやすくて気に入っているから。
+
+### バックエンド、認証等
+
+supabaseを使うことでデータベース操作に慣れていなくても、頑張れば実装できる点。認証をsupabaseで行わずにclerkを用いた理由はsupabaseには確認メールを送る上限があり、clerkにもあるが、clerkの方が上限が多かったので、認証ではclerkを採用する。
+
+### デプロイ
+
+vercelで行うとgithubのリポジトリからデプロイすることが可能なのでvercelで行うようにする。
+
+### CI/CD
+
+取り組んだことがなかったので、GithubActionsを用いてCI/CDを学習しようと考えたから。
